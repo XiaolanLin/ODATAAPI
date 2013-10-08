@@ -20,8 +20,10 @@
 
   <System rdf:ID="OOR">
     <name>Open Ontology Repository</name>
-    <author>Ken Baclawski</author>
-    <author>M&#225;ximo Gurm&#233;ndez</author>
+    <author>Ding, Tongzu </author>
+    <author>Liu, Gang</author>
+    <author>Lin, Xiaolan</author>
+    <author>Yang, Man</author>
     <exposition>
       The OOR as a participant in use cases. All communication between any user
       and the OOR is assumed to occur on an authenticated and secure
@@ -36,7 +38,7 @@
     <version>0.2</version>
     <organization>Northeastern University</organization>
     <organization>OOR Initiative</organization>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">May 20, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
   </System>
 
   <!-- Use Case Descriptions -->
