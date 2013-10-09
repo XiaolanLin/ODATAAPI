@@ -395,6 +395,66 @@
 
   
   <!-- ================ added end by Lin,Xiaolan =============== -->
+  
+  
+  <!-- ==============================added by Man,Yang================================= -->
+  
+  <UseCase rdf:ID="readEntities" system="#VOYA">
+    <name>Read entities on VOYA data</name>
+    <author>Man Yang</author>
+    <exposition>
+      The user  wants to retrieve/read entities on VOYA data such as
+	  retrieve a page.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          A user constructs the URL to retrieve entities on VOYA.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          The user makes the request using HTTP URL query.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user request and generates the media wiki
+		  API query according to the user's request.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint makes the API request Media Wiki.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#MediaWiki"/>
+        <specification>
+          The Media Wiki API retrieves the required entities from VOYA database as per request
+		  and returns the entities.
+        </specification>
+		<next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives response from Media Wiki API and returns 
+		  the entities to the user.
+        </specification>
+		<next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          The user receives requested entities as a response from the service response.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
 
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
@@ -435,7 +495,9 @@
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
-
+  
+  <!-- ==============================END added by Man,Yang================================= -->
+  
   <UseCase rdf:ID="queryAuthorities" system="#OOR">
     <name>Query the registration authorities</name>
     <author>M&#225;ximo Gurm&#233;ndez</author>
