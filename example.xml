@@ -399,6 +399,7 @@
   
   <!-- ==============================added by Man,Yang================================= -->
   
+    <!-- all user can read information on VOYA -->
   <UseCase rdf:ID="readEntities" system="#VOYA">
     <name>Read entities on VOYA data</name>
     <author>Man Yang</author>
@@ -456,7 +457,50 @@
     </first>
   </UseCase>
 
-
+  <!-- admin user view account -->
+  
+    <UseCase rdf:ID="adminDeleteAccount" system="#VOYA">
+    <name>Adminuser view account</name>
+    <author> Man Yang </author>
+    <exposition>
+      An administer wants to view the an user's account. 
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An Adminuser enter the user management page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An adminuser clicks on detail account button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to show the information of the account.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An individual clicks on return button.
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA return to the menber management page for the adminuser.
+        </specification>
+        <hasAlternativeFlow rdf:resource="#canceldelete"/>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
   <!-- ==============================END added by Man,Yang================================= -->
   
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
