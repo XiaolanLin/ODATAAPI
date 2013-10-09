@@ -456,6 +456,9 @@
     </first>
   </UseCase>
 
+
+  <!-- ==============================END added by Man,Yang================================= -->
+  
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
     <author>M&#225;ximo Gurm&#233;ndez</author>
@@ -496,8 +499,7 @@
     </first>
   </UseCase>
   
-  <!-- ==============================END added by Man,Yang================================= -->
-  
+
   <UseCase rdf:ID="queryAuthorities" system="#OOR">
     <name>Query the registration authorities</name>
     <author>M&#225;ximo Gurm&#233;ndez</author>
