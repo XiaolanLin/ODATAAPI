@@ -172,7 +172,7 @@
 
 <!-- added by LIN,Xiaolan -->
   <UseCase rdf:ID="Normaluser" system="#VOYA">
-    <name>Normal user delete</name>
+    <name>Normaluser delete</name>
     <author>Xiaolan Lin</author>
     <exposition>
       A user wants to cancel the account. 
@@ -189,13 +189,13 @@
       <Step>
         <stepInitiator rdf:resource="#Normaluser"/>
         <specification>
-          An individual clicks on delete account button, in the personal setting page.
+          A user clicks on delete account button, in the personal setting page.
         </specification>
         <next>
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          VOYA presents a window to make that the user really want to delete the account.
+          VOYA presents a window to conform the deleting action.
           The window includes a warning message , a cancel button and a yes button.
         </specification>
         <next>
@@ -228,6 +228,94 @@
         <specification>
           VOYA represents welcome page for new user. Page includes links to Getting Start. 
         </specification>
+         <hasAlternativeFlow rdf:resource="#canceldelete"/>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
+  <Alternative rdf:ID="canceldelete">
+      <name>cancel delete</name>
+      <author>Xiaolan Lin</author>
+      <exposition>
+          if in the basic flow the user clicks the cancel button, the system returns to the personal setting page.
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 08, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  The user clicks the cancel button.
+              </specification>
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  VOYA notifies that the delete has been canceled.
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+  
+  
+    <UseCase rdf:ID="Adminuser" system="#VOYA">
+    <name>Adminuser delete account</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      An administer wants to cancel the an user's account. 
+      An administer queries the VOYA to delete an user's account information.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An Adminuser enter the user management page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An adminuser clicks on delete account button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the deleting action. The window includes a
+          warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA processes a task for deleting the account information. 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the account is deleted successfully.  
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents the updated menber management page for the adminuser.
+        </specification>
+        <hasAlternativeFlow rdf:resource="#canceldelete"/>
       </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
