@@ -52,7 +52,7 @@
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
     <first>
       <Step>
-        <stepInitiator rdf:resource="#Normalser"/>
+        <stepInitiator rdf:resource="#Normaluser"/>
         <specification>
           An individual open the app on iOS.
         </specification>
@@ -167,6 +167,72 @@
       </Step></next></Step>
     </first>
   </Alternative>
+
+
+
+<!-- added by LIN,Xiaolan -->
+  <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normal user delete</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      A user wants to cancel the account. 
+      A user queries the VOYA to delete the account information.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          A user enters the personal setting page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on delete account button, in the personal setting page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to make that the user really want to delete the account.
+          The window includes a warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA processes a task for deleting the account information. 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the account is deleted successfully.  
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents welcome page for new user. Page includes links to Getting Start. 
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
+  <!-- added end by Lin,Xiaolan-->
 
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
