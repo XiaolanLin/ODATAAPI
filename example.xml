@@ -25,15 +25,11 @@
     <author>Lin, Xiaolan</author>
     <author>Yang, Man</author>
     <exposition>
-      The OOR as a participant in use cases. All communication between any user
-      and the OOR is assumed to occur on an authenticated and secure
-      channel. Activities such as login are therefore not included in any of
-      the use cases. The term item is used generically for any entity that is
-      administered by the OOR with versioning and annotations such as
-      provenance information. This includes ontology modules, mappings,
-      configurations, compositions, process definitions and policies.
-      Configuration is itself a generic term that includes contexts, frameworks
-      and situations.
+      The VOYA is also a participant in use cases. All the communication between
+      user and VOYA is assumed under an authenticated and secure channel. Activities
+      such as signup are therefore not included in any of the use cases. The term
+      item is used generically for any entity that is administered by the VOYA with
+      versioning and annotations such as provenance information.
     </exposition>
     <version>0.1</version>
     <organization>Northeastern University</organization>
@@ -319,6 +315,7 @@
       </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
+  
   
   <!-- added end by Lin,Xiaolan-->
 
