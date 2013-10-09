@@ -18,6 +18,7 @@
     <owl:imports rdf:resource="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo.owl"/>
   </owl:Ontology>
 
+
   <System rdf:ID="VOYA">
     <name>VOYA</name>
     <author>Ding, Tongzu </author>
@@ -25,6 +26,13 @@
     <author>Lin, Xiaolan</author>
     <author>Yang, Man</author>
     <exposition>
+        The VOYA provides a way to query and update the pages of WikiVoyage. The API is an
+        Odata endpoint which accepts various user queries and in response provides user the
+        ability to read and manipulate WikiVoyage pages. Being the API that follows the OData
+        standard, it exposes the Entity Data Model and it is assumed that the queries that the
+        user makes follow the url conventions of OData standard. This API acts as a facade to
+        the WikiVoyage features, data and medadata.
+        
       The VOYA is also a participant in use cases. All the communication between
       user and VOYA is assumed under an authenticated and secure channel. Activities
       such as signup are therefore not included in any of the use cases. The term
@@ -166,8 +174,11 @@
 
 
 
-<!-- added by LIN,Xiaolan -->
-  <UseCase rdf:ID="Normaluser" system="#VOYA">
+<!-- ==============================added by LIN,Xiaolan================================= -->
+
+<!-- normal user delete account -->
+
+  <UseCase rdf:ID="normalDeleteAccount" system="#VOYA">
     <name>Normaluser delete</name>
     <author>Xiaolan Lin</author>
     <exposition>
@@ -253,8 +264,9 @@
       </first>
   </Alternative>
   
+  <!-- admin user delete account -->
   
-    <UseCase rdf:ID="Adminuser" system="#VOYA">
+    <UseCase rdf:ID="adminDeleteAccount" system="#VOYA">
     <name>Adminuser delete account</name>
     <author>Xiaolan Lin</author>
     <exposition>
@@ -316,12 +328,13 @@
     </first>
   </UseCase>
     
-    
-    <UseCase rdf:ID="Normaluser" system="#VOYA">
+  <!--  user delete entity -->
+  
+    <UseCase rdf:ID="deleteEntities" system="#VOYA">
     <name>Normaluser delete entity</name>
     <author>Xiaolan Lin</author>
     <exposition>
-      A user wants to delete an entity on WiKiVoyage data such as delete a page.
+      A user wants to delete an entity on Media Wiki data such as delete a page.
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
@@ -329,13 +342,13 @@
       <includes rdf:resource="#queryAuthorities"/>
       <next>
       <Step>
-        <stepInitiator rdf:resource="#Normaluser"/>
+        <stepInitiator rdf:resource="#User"/>
         <specification>
           A user enters the personal page.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Normaluser"/>
+        <stepInitiator rdf:resource="#User"/>
         <specification>
           A user clicks on the delete button on the selected entity.
         </specification>
@@ -348,7 +361,7 @@
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Normaluser"/>
+        <stepInitiator rdf:resource="#User"/>
         <specification>
           An individual clicks on yes button.
         </specification>
@@ -360,7 +373,7 @@
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OD"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           VOYA received the notification from the server, indicate that the entity is delete successfully.
         </specification>
@@ -381,8 +394,7 @@
   </UseCase>
 
   
-  
-  <!-- added end by Lin,Xiaolan-->
+  <!-- ================ added end by Lin,Xiaolan =============== -->
 
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
