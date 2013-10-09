@@ -13,13 +13,13 @@
   <!-- OOR Use Case Instance Data -->
   
   <owl:Ontology rdf:about="">
-    <owl:versionInfo>v 0.2 2010/05/20 14:15:58 kenb/mgurmendez</owl:versionInfo>
-    <rdfs:comment>OOR Use Case Descriptions</rdfs:comment>
+    <owl:versionInfo>v 0.1 2013/10/08 14:15:58</owl:versionInfo>
+    <rdfs:comment>VOYA Use Case Descriptions</rdfs:comment>
     <owl:imports rdf:resource="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo.owl"/>
   </owl:Ontology>
 
-  <System rdf:ID="OOR">
-    <name>Open Ontology Repository</name>
+  <System rdf:ID="VOYA">
+    <name>VOYA</name>
     <author>Ding, Tongzu </author>
     <author>Liu, Gang</author>
     <author>Lin, Xiaolan</author>
@@ -35,97 +35,139 @@
       Configuration is itself a generic term that includes contexts, frameworks
       and situations.
     </exposition>
-    <version>0.2</version>
+    <version>0.1</version>
     <organization>Northeastern University</organization>
-    <organization>OOR Initiative</organization>
+    <organization>Team Chiru</organization>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
   </System>
 
   <!-- Use Case Descriptions -->
 
-  <UseCase rdf:ID="accredit" system="#OOR">
-    <name>Accredit Registration Authority</name>
-    <author>Ken Baclawski</author>
+  <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normal user signup</name>
+    <author>Tongzu Ding</author>
     <exposition>
-      The accreditation authority decides whether to include a registration
-      authority.
+      An individual wants to register with the VOYA
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
     <first>
       <Step>
-        <stepInitiator rdf:resource="#User"/>
+        <stepInitiator rdf:resource="#Normalser"/>
         <specification>
-          A user requests that a new registration authority be admitted.
+          An individual open the app on iOS.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#Normaluser"/>
         <specification>
-          The system queues the request and informs the Accreditor.
+          An individual clicks on sign up button, from main page.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Accreditor"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The Accreditor accredits the new registration authority and grants
-          the registrar role to the requesting user.
+          VOYA presents a form of information to be populated. The page includes links to help information. Form includes: a.username, b.password, c.email.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#Normaluser"/>
         <specification>
-          The system notifies the user that the request was accepted.
+          An individual clicks on submit button.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#User"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The user receives the notification.
+          VOYA responds with visual clue indication the processing of User Signup.
         </specification>
-      </Step></next></Step></next></Step></next></Step></next></Step>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA sends message to new user's email, confirming registration.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents welcome page for new user. Page includes links to Getting Start.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
 
-  <UseCase rdf:ID="registerSteward" system="#OOR">
-    <name>Steward Registration </name>
-    <author>M&#225;ximo Gurm&#233;ndez</author>
+  <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normaluser login </name>
+    <author>Tongzu Ding</author>
     <exposition>
-      A user wants to become a Steward for a registration authority.
+      A normal user logs into the VOYA system.
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 09, 2013</creationDate>
     <first>
       <Step>
-        <includes rdf:resource="#queryAuthorities"/>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#User"/>
+        <stepInitiator  rdf:resource="#Normaluser"/>
         <specification>
-          The user places the request to be a steward to a particular
-          registrar.
+          The normal user wishes to log into the VOYA system, and clicks the login button.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The system notifies the registrar that a request has been made for a
-          user to become a steward.
+          VOYA represents a page which requests that the user enter her or his username and password.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Registrar"/>
+        <stepInitiator rdf:resource="#Normaluser"/>
         <specification>
-          The registrar approves the request.
+          The user enters her or his username and password.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The system notifies the user.
+          The system validates the entered username and password and logs the user into the VOYA system.
         </specification>
-      </Step></next></Step></next></Step></next></Step></next></Step>
+        <hasAlternativeFlow rdf:resource="#invalidlogin"/>
+      </Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
-  
+
+<Alternative rdf:ID="invalidlogin">
+    <name>invalid login</name>
+    <author>Tongzu Ding</author>
+    <exposition>
+      if in the basic flow the user enters an invalid username and/or password, the system displays an error.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 08, 2013</creationDate>
+    <precondition>
+      <Condition>
+        <specification>
+          The user enters an invalid username and or password.
+        </specification>
+      </Condition>
+    </precondition>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that she or he entered invalid username and or password.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA returns to the main page.
+        </specification>
+      </Step></next></Step>
+    </first>
+  </Alternative>
+
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
     <author>M&#225;ximo Gurm&#233;ndez</author>
