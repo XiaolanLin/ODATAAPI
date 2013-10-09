@@ -315,6 +315,71 @@
       </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
+    
+    
+    <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normaluser delete entity</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      A user wants to delete an entity from the wikivoyage.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+    <Step>
+      <includes rdf:resource="#queryAuthorities"/>
+      <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          A user enters the personal page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          A user clicks on the delete button on the selected entity.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the deleting action.
+          The window includes a warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA requests a query to the server, try to delete the entity.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA received the notification from the server, indicate that the entity is delete successfully.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the entity is deleted successfully.
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents the updated entities displayed in the personal page.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
   
   
   <!-- added end by Lin,Xiaolan-->
