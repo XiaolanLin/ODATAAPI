@@ -321,7 +321,7 @@
     <name>Normaluser delete entity</name>
     <author>Xiaolan Lin</author>
     <exposition>
-      A user wants to delete an entity from the wikivoyage.
+      A user wants to delete an entity on WiKiVoyage data such as delete a page.
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
@@ -356,11 +356,11 @@
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          VOYA requests a query to the server, try to delete the entity.
+          VOYA make the user's request by formatting a HTTP URL query for metadata.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#VOYA"/>
+        <stepInitiator rdf:resource="#OD"/>
         <specification>
           VOYA received the notification from the server, indicate that the entity is delete successfully.
         </specification>
