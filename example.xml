@@ -1069,90 +1069,35 @@
 
   <!-- Actors -->  
 
-  <Actor rdf:ID="Accreditor">
-    <name>Accreditation Authority</name>
+  <Actor rdf:ID="Normaluser">
+    <name>Normal User</name>
     <exposition>
-      The singular authority that manages the registration authorities of the
-      OOR.  One important responsibility of the accreditor is the allocation of
-      top-level names.  Consequently, the accreditor is analogous to a domain
-      name registrar. The primary difference is that domain names can be bought
-      and sold, while the names allocated by the accreditor must be permanent
-      and in the public domain.
+      Normal user who have priviledges to read, update, create entities on VOYA.
     </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
+    <kindOf rdf:resource="#User"/>
   </Actor>
   
-  <Actor rdf:ID="Registrar">
-    <name>Registration Authority</name>
+  <Actor rdf:ID="Adminuser">
+    <name>Administrator</name>
     <exposition>
-      A top-level registration authority. It has a top-level name assigned by
-      the accreditor. Standards bodies, professional societies and publishers
-      are examples of registration authorities. Although a registrar is an
-      organization, the organizational structure is not represented in the OOR.
-      Consequently, a registrar is a kind of user with specific capabilities
-      and responsibilities that are not common to all users. One can think of a
-      registrar as a user that represents the registration authority during
-      interactions with the OOR.
+      Top-level user with full priviledges with VOYA, and manage normaluser.
     </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
+    <kindOf rdf:resource="#User"/>
   </Actor>
   
-  <Actor rdf:ID="Steward">
-    <name>Community Steward</name>
+  <Actor rdf:ID="Guest">
+    <name>Guest user</name>
     <exposition>
-      A domain-specific community within the context of a registration
-      authority.  Examples include a working group of a standards body, a
-      special interest group of a professional society, and a journal produced
-      by a publisher.  Although a community is a collection of individuals, its
-      internal structure is not represented in the OOR. Consequently, a steward
-      is a kind of user with specific capabilities and responsibilities that
-      are not common to all users. One can think of a steward as a user that
-      represents the community during interactions with the OOR.
-    </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
-  </Actor>
-  
-  <Actor rdf:ID="Submittter">
-    <name>Content Submitter</name>
-    <exposition>
-      An individual that submits new materials or changes to existing materials
-      that are managed by a specific steward. Depending on the steward, there
-      may be no restrictions on who can be a submitter or there may be only a
-      fixed set of submitters.
-    </exposition>
-    <kindOf rdf:resource="#ProcessParticipant"/>
-  </Actor>
-  
-  <Actor rdf:ID="ProcessManager">
-    <name>Process Manager</name>
-    <exposition>
-      The common generalization of accreditors, registrars and stewards.  They
-      share the capability of creating and managing process and policy
-      definitions.
-    </exposition>
-    <kindOf rdf:resource="#ProcessParticipant"/>
-  </Actor>
-  
-  <Actor rdf:ID="ProcessParticipant">
-    <name>Process Participant</name>
-    <exposition>
-      A user that participates in an OOR process. Since processes are
-      associated with registrars and stewards, a user that participates in an
-      OOR process is implicitly also associated with that registrar or
-      steward. For example, a user could contribute to the OOR by providing
-      usage information and informal evaluations.
+      A individual who can read entities in VOYA without login.
     </exposition>
     <kindOf rdf:resource="#User"/>
   </Actor>
   
   <Actor rdf:ID="User">
-    <name>General User</name>
+    <name>user</name>
     <exposition>
-      A user of the OOR. This includes process managers and participants as
-      well as individuals who are searching the OOR or retrieving from it in an
-      ad hoc manner. Unlike process managers and participants, users in general
-      need not be associated with a registrar or steward.
+      The common user of VOYA. This include normaluser, adminuser and guest.
     </exposition>
   </Actor>
-
+  
 </rdf:RDF>
