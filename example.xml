@@ -85,6 +85,51 @@
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
+<<<<<<< HEAD
+=======
+  
+   <!-- setup Odata endpoint for VOYA -->
+   
+    <UseCase rdf:ID="setupODataEndpoint" system="#VOYA">
+    <name>Setup OData endpoint for VOYA </name>
+    <author>Man Yang</author>
+    <exposition>
+      To set-up and configure the OData endpoint for VOYA for allowing users to query
+	  and access data and metadata.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          Set up VOYA using MySQL database and API source.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          Compile odata source along with ODataMediaWikiProducer
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          Run ODataMediaWikiProducer java process to start the endpoint at 'http://....'
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The OData Media Wiki endpoint is setup successfully.
+        </specification>        
+      </Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
+  
+  <!-- ==============================END added by Man,Yang================================= -->
+   <!--=======================================added by Gang Liu==============================-->
+>>>>>>> 61f7c506466b17dac12172bb2d789682aaa673de
 
   <UseCase rdf:ID="registerSteward" system="#OOR">
     <name>Steward Registration </name>
@@ -125,6 +170,36 @@
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
+<<<<<<< HEAD
+=======
+
+   <Alternative rdf:ID="cancle">
+      <name>checkfailed</name>
+      <author>CHIRU</author>
+      <exposition>
+          the administrator clicks the "cancle" button
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 09, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  the administrator give up updating
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  The VOYA endpoint accepts the user's finial request and returens an original homepage
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+
+  <!--================================================ENDDING by Gang--========================================>
+   <!--================================================ENDDING by Gang--========================================>
+  
+>>>>>>> 61f7c506466b17dac12172bb2d789682aaa673de
   
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
