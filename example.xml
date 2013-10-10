@@ -582,16 +582,17 @@
     </first>
   </UseCase>
   
+  <!--  modified by Lin,Xiaolan -->
 
-  <UseCase rdf:ID="queryAuthorities" system="#OOR">
+  <UseCase rdf:ID="queryAuthorities" system="#VOYA">
     <name>Query the registration authorities</name>
-    <author>M&#225;ximo Gurm&#233;ndez</author>
+    <author>Xiaolan Lin</author>
     <exposition>
       A user queries the system to obtain information on relevant registration
-      authorities, including the accreditor, registrars and stewards. This will
+      authorities, including the guest, normal user and admin user. This will
       only retrieve publicly released information about the authorities.
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">October 9, 2013</creationDate>
     <first>
       <Step>
         <stepInitiator rdf:resource="#User"/>
@@ -601,15 +602,17 @@
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           The system returns the information about all relevant registration
-          authorities, including all registrars and stewards associated with
+          authorities, including all registrars and admin users associated with
           each registration authority.
         </specification>
       </Step></next></Step>
     </first>
   </UseCase>
+
+<!-- modify end -->
 
   <UseCase rdf:ID="uploadProcessDefinition" system="#OOR">
     <name>Upload Process or Policy Definition</name>
