@@ -501,6 +501,45 @@
     </first>
   </UseCase>
   
+   <!-- setup Odata endpoint for VOYA -->
+   
+    <UseCase rdf:ID="setupODataEndpoint" system="#VOYA">
+    <name>Setup OData endpoint for VOYA </name>
+    <author>Man Yang</author>
+    <exposition>
+      To set-up and configure the OData endpoint for VOYA for allowing users to query
+	  and access data and metadata.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Administrator"/>
+        <specification>
+          Set up VOYA using MySQL database and API source.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Administrator"/>
+        <specification>
+          Compile odata source along with ODataMediaWikiProducer
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Administrator"/>
+        <specification>
+          Run ODataMediaWikiProducer java process to start the endpoint at 'http://....'
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Administrator"/>
+        <specification>
+          The OData Media Wiki endpoint is setup successfully.
+        </specification>        
+      </Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
+  
   <!-- ==============================END added by Man,Yang================================= -->
   
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
