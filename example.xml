@@ -513,25 +513,25 @@
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
       <Step>
-        <stepInitiator rdf:resource="#Administrator"/>
+        <stepInitiator rdf:resource="#Adminuser"/>
         <specification>
           Set up VOYA using MySQL database and API source.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Administrator"/>
+        <stepInitiator rdf:resource="#Adminuser"/>
         <specification>
           Compile odata source along with ODataMediaWikiProducer
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Administrator"/>
+        <stepInitiator rdf:resource="#Adminuser"/>
         <specification>
           Run ODataMediaWikiProducer java process to start the endpoint at 'http://....'
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Administrator"/>
+        <stepInitiator rdf:resource="#Adminuser"/>
         <specification>
           The OData Media Wiki endpoint is setup successfully.
         </specification>        
