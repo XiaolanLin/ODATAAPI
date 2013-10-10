@@ -13,80 +13,493 @@
   <!-- OOR Use Case Instance Data -->
   
   <owl:Ontology rdf:about="">
-    <owl:versionInfo>v 0.2 2010/05/20 14:15:58 kenb/mgurmendez</owl:versionInfo>
-    <rdfs:comment>OOR Use Case Descriptions</rdfs:comment>
+    <owl:versionInfo>v 0.1 2013/10/08 14:15:58</owl:versionInfo>
+    <rdfs:comment>VOYA Use Case Descriptions</rdfs:comment>
     <owl:imports rdf:resource="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo.owl"/>
   </owl:Ontology>
 
-  <System rdf:ID="OOR">
-    <name>Open Ontology Repository</name>
+
+  <System rdf:ID="VOYA">
+    <name>VOYA</name>
     <author>Ding, Tongzu </author>
     <author>Liu, Gang</author>
     <author>Lin, Xiaolan</author>
     <author>Yang, Man</author>
     <exposition>
-      The OOR as a participant in use cases. All communication between any user
-      and the OOR is assumed to occur on an authenticated and secure
-      channel. Activities such as login are therefore not included in any of
-      the use cases. The term item is used generically for any entity that is
-      administered by the OOR with versioning and annotations such as
-      provenance information. This includes ontology modules, mappings,
-      configurations, compositions, process definitions and policies.
-      Configuration is itself a generic term that includes contexts, frameworks
-      and situations.
+        The VOYA provides a way to query and update the pages of WikiVoyage. The API is an
+        Odata endpoint which accepts various user queries and in response provides user the
+        ability to read and manipulate WikiVoyage pages. Being the API that follows the OData
+        standard, it exposes the Entity Data Model and it is assumed that the queries that the
+        user makes follow the url conventions of OData standard. This API acts as a facade to
+        the WikiVoyage features, data and medadata.
+        
+      The VOYA is also a participant in use cases. All the communication between
+      user and VOYA is assumed under an authenticated and secure channel. Activities
+      such as signup are therefore not included in any of the use cases. The term
+      item is used generically for any entity that is administered by the VOYA with
+      versioning and annotations such as provenance information.
     </exposition>
-    <version>0.2</version>
+    <version>0.1</version>
     <organization>Northeastern University</organization>
-    <organization>OOR Initiative</organization>
+    <organization>Team Chiru</organization>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
   </System>
 
   <!-- Use Case Descriptions -->
 
-  <UseCase rdf:ID="accredit" system="#OOR">
-    <name>Accredit Registration Authority</name>
-    <author>Ken Baclawski</author>
+  <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normal user signup</name>
+    <author>Tongzu Ding</author>
     <exposition>
-      The accreditation authority decides whether to include a registration
-      authority.
+      An individual wants to register with the VOYA
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 8, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual open the app on iOS.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on sign up button, from main page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a form of information to be populated. The page includes links to help information. Form includes: a.username, b.password, c.email.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on submit button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA responds with visual clue indication the processing of User Signup.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA sends message to new user's email, confirming registration.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents welcome page for new user. Page includes links to Getting Start.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  <UseCase rdf:ID="Normaluser" system="#VOYA">
+    <name>Normaluser login </name>
+    <author>Tongzu Ding</author>
+    <exposition>
+      A normal user logs into the VOYA system.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 09, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator  rdf:resource="#Normaluser"/>
+        <specification>
+          The normal user wishes to log into the VOYA system, and clicks the login button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents a page which requests that the user enter her or his username and password.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user enters her or his username and password.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The system validates the entered username and password and logs the user into the VOYA system.
+        </specification>
+        <hasAlternativeFlow rdf:resource="#invalidlogin"/>
+      </Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+<Alternative rdf:ID="invalidlogin">
+    <name>invalid login</name>
+    <author>Tongzu Ding</author>
+    <exposition>
+      if in the basic flow the user enters an invalid username and/or password, the system displays an error.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 08, 2013</creationDate>
+    <precondition>
+      <Condition>
+        <specification>
+          The user enters an invalid username and or password.
+        </specification>
+      </Condition>
+    </precondition>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that she or he entered invalid username and or password.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA returns to the main page.
+        </specification>
+      </Step></next></Step>
+    </first>
+  </Alternative>
+
+
+
+<!-- ==============================added by LIN,Xiaolan================================= -->
+
+<!-- normal user delete account -->
+
+  <UseCase rdf:ID="normalDeleteAccount" system="#VOYA">
+    <name>Normaluser delete</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      A user wants to cancel the account. 
+      A user queries the VOYA to delete the account information.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          A user enters the personal setting page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          A user clicks on delete account button, in the personal setting page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the deleting action.
+          The window includes a warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA processes a task for deleting the account information. 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the account is deleted successfully.  
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents welcome page for new user. Page includes links to Getting Start. 
+        </specification>
+         <hasAlternativeFlow rdf:resource="#canceldelete"/>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+  
+  <Alternative rdf:ID="canceldelete">
+      <name>cancel delete</name>
+      <author>Xiaolan Lin</author>
+      <exposition>
+          if in the basic flow the user clicks the cancel button, the system returns to the personal setting page.
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 08, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  The user clicks the cancel button.
+              </specification>
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  VOYA notifies that the delete has been canceled.
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+  
+  <!-- admin user delete account -->
+  
+    <UseCase rdf:ID="adminDeleteAccount" system="#VOYA">
+    <name>Adminuser delete account</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      An administer wants to cancel the an user's account. 
+      An administer queries the VOYA to delete an user's account information.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An Adminuser enter the user management page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An adminuser clicks on delete account button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the deleting action. The window includes a
+          warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA processes a task for deleting the account information. 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA update the user account database.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the account is deleted successfully.  
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents the updated menber management page for the adminuser.
+        </specification>
+        <hasAlternativeFlow rdf:resource="#canceldelete"/>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+    
+  <!--  user delete entity -->
+  
+    <UseCase rdf:ID="deleteEntities" system="#VOYA">
+    <name>Normaluser delete entity</name>
+    <author>Xiaolan Lin</author>
+    <exposition>
+      A user wants to delete an entity on Media Wiki data such as delete a page.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+    <Step>
+      <includes rdf:resource="#queryAuthorities"/>
+      <next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          A user enters the personal page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          A user clicks on the delete button on the selected entity.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the deleting action.
+          The window includes a warning message , a cancel button and a yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          An individual clicks on yes button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA make the user's request by formatting a HTTP URL query for metadata.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA received the notification from the server, indicate that the entity is delete successfully.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA notifies the user that the entity is deleted successfully.
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA represents the updated entities displayed in the personal page.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  
+  <!-- ================ added end by Lin,Xiaolan =============== -->
+  
+  
+  <!-- ==============================added by Man,Yang================================= -->
+  
+    <!-- all user can read information on VOYA -->
+  <UseCase rdf:ID="readEntities" system="#VOYA">
+    <name>Read entities on VOYA data</name>
+    <author>Man Yang</author>
+    <exposition>
+      The user  wants to retrieve/read entities on VOYA data such as
+	  retrieve a page.
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
-          A user requests that a new registration authority be admitted.
-        </specification>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#OOR"/>
-        <specification>
-          The system queues the request and informs the Accreditor.
-        </specification>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#Accreditor"/>
-        <specification>
-          The Accreditor accredits the new registration authority and grants
-          the registrar role to the requesting user.
-        </specification>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#OOR"/>
-        <specification>
-          The system notifies the user that the request was accepted.
+          A user constructs the URL to retrieve entities on VOYA.
         </specification>
         <next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
-          The user receives the notification.
+          The user makes the request using HTTP URL query.
         </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user request and generates the media wiki
+		  API query according to the user's request.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint makes the API request Media Wiki.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#MediaWiki"/>
+        <specification>
+          The Media Wiki API retrieves the required entities from VOYA database as per request
+		  and returns the entities.
+        </specification>
+	<next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives response from Media Wiki API and returns 
+		  the entities to the user.
+        </specification>
+	<next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          The user receives requested entities as a response from the service response.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  <!-- admin user view account -->
+  
+    <UseCase rdf:ID="adminDeleteAccount" system="#VOYA">
+    <name>Adminuser view account</name>
+    <author> Man Yang </author>
+    <exposition>
+      An administer wants to view the an user's account. 
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An Adminuser enter the user management page.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An adminuser clicks on detail account button.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to show the information of the account.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          An individual clicks on return button.
+        </specification>
+        <next>
+      <Step>
+       <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA return to the menber management page for the adminuser.
+        </specification>
+        <hasAlternativeFlow rdf:resource="#canceldelete"/>
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
-<<<<<<< HEAD
-=======
   
    <!-- setup Odata endpoint for VOYA -->
    
@@ -128,50 +541,234 @@
   
   
   <!-- ==============================END added by Man,Yang================================= -->
-   <!--=======================================added by Gang Liu==============================-->
->>>>>>> 61f7c506466b17dac12172bb2d789682aaa673de
+  
+    <!--=======================================added by Gang Liu==============================-->
 
-  <UseCase rdf:ID="registerSteward" system="#OOR">
-    <name>Steward Registration </name>
-    <author>M&#225;ximo Gurm&#233;ndez</author>
+    <UseCase rdf:ID="updateedit" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
     <exposition>
-      A user wants to become a Steward for a registration authority.
+      A user of the VOYA wantS to update their previously commonts or edit a page's contents
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
     <first>
       <Step>
-        <includes rdf:resource="#queryAuthorities"/>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          A user constructs the URL to update an entity on Media Wiki.
+        </specification>
         <next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
-          The user places the request to be a steward to a particular
-          registrar.
+          The user makes the request using HTTP URL query.
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The system notifies the registrar that a request has been made for a
-          user to become a steward.
+          The VOYA endpoint receives the user's request and makes a registration authority check 
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#Registrar"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The registrar approves the request.
+          The VOYA endpoint passes the user's authority check
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The system notifies the user.
+          The VOYA endpoint generates the media wiki according to the user's request.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint makes the API request Media Wiki.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#MediaWiki"/>
+        <specification>
+          The VOYA API updates the required entities on VOYA database as per request
+      and returns the updated entity.
+        </specification>
+    <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives response from Media Wiki API and returns 
+      updated entity to the user.
+        </specification>
+    <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user receives updated entity as the service response.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  <Alternative rdf:ID="guest">
+      <name>checkfailed</name>
+      <author>CHIRU</author>
+      <exposition>
+          the user are failed to registration authority check, VOYA will reject the user's requestion
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 09, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  The user do not have the editor privileges
+              </specification>
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  VOYA notifies that the editting operate are rejected
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+
+   <UseCase rdf:ID="updatePersonalInfo" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      A user of the VOYA wants to update personal personal information
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normal user"/>
+        <specification>
+         The Normal User requests a personal information updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request then return a personal setting page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user makes a confirm for updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint accepts the user's request and the returens a updated page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint generates the media wiki according to the user's request.
         </specification>
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
-<<<<<<< HEAD
-=======
+
+  <UseCase rdf:ID="updateSystemSetting" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      A user of the VOYA wants to update system setting such as news notification
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normal user"/>
+        <specification>
+         The Normal User makes a request for updating the preference setting of VOYA system
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request and return a system setting page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user makes a confirm for updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint accepts the user's request and returens an updated page
+        </specification>
+      </Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+ <UseCase rdf:ID="updatehomepage" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      An administrator wants to update the content of the homepage such as recommendation activities and advertisements
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+         The administrator makes a request for updating the homepage contents
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request and makes a registration authority check 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint passes the check and returens an administration page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator updates changes
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the update action, and a "cancel" button and a "yes" button included.
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator makes a finial confirm
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator clicks "yes" button
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+           The VOYA endpoint accepts the user's request and returens an updated homepage
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
 
    <Alternative rdf:ID="cancle">
       <name>checkfailed</name>
@@ -184,6 +781,7 @@
           <Condition>
               <specification>
                   the administrator give up updating
+              </specification>
           </Condition>
       </precondition>
       <first>
@@ -196,10 +794,8 @@
       </first>
   </Alternative>
 
-  <!--================================================ENDDING by Gang--========================================>
-   <!--================================================ENDDING by Gang--========================================>
-  
->>>>>>> 61f7c506466b17dac12172bb2d789682aaa673de
+  <!-- ================================================END by Gang ======================================== -->
+
   
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
@@ -240,16 +836,18 @@
       </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
+  
+  <!--  modified by Lin,Xiaolan -->
 
-  <UseCase rdf:ID="queryAuthorities" system="#OOR">
+  <UseCase rdf:ID="queryAuthorities" system="#VOYA">
     <name>Query the registration authorities</name>
-    <author>M&#225;ximo Gurm&#233;ndez</author>
+    <author>Xiaolan Lin</author>
     <exposition>
       A user queries the system to obtain information on relevant registration
-      authorities, including the accreditor, registrars and stewards. This will
+      authorities, including the guest, normal user and admin user. This will
       only retrieve publicly released information about the authorities.
     </exposition>
-    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">March 14, 2010</creationDate>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">October 9, 2013</creationDate>
     <first>
       <Step>
         <stepInitiator rdf:resource="#User"/>
@@ -259,15 +857,17 @@
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="#OOR"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           The system returns the information about all relevant registration
-          authorities, including all registrars and stewards associated with
+          authorities, including all registrars and admin users associated with
           each registration authority.
         </specification>
       </Step></next></Step>
     </first>
   </UseCase>
+
+<!-- modify end -->
 
   <UseCase rdf:ID="uploadProcessDefinition" system="#OOR">
     <name>Upload Process or Policy Definition</name>
@@ -1102,90 +1702,35 @@
 
   <!-- Actors -->  
 
-  <Actor rdf:ID="Accreditor">
-    <name>Accreditation Authority</name>
+  <Actor rdf:ID="Normaluser">
+    <name>Normal User</name>
     <exposition>
-      The singular authority that manages the registration authorities of the
-      OOR.  One important responsibility of the accreditor is the allocation of
-      top-level names.  Consequently, the accreditor is analogous to a domain
-      name registrar. The primary difference is that domain names can be bought
-      and sold, while the names allocated by the accreditor must be permanent
-      and in the public domain.
+      Normal user who have priviledges to read, update, create entities on VOYA.
     </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
+    <kindOf rdf:resource="#User"/>
   </Actor>
   
-  <Actor rdf:ID="Registrar">
-    <name>Registration Authority</name>
+  <Actor rdf:ID="Adminuser">
+    <name>Administrator</name>
     <exposition>
-      A top-level registration authority. It has a top-level name assigned by
-      the accreditor. Standards bodies, professional societies and publishers
-      are examples of registration authorities. Although a registrar is an
-      organization, the organizational structure is not represented in the OOR.
-      Consequently, a registrar is a kind of user with specific capabilities
-      and responsibilities that are not common to all users. One can think of a
-      registrar as a user that represents the registration authority during
-      interactions with the OOR.
+      Top-level user with full priviledges with VOYA, and manage normaluser.
     </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
+    <kindOf rdf:resource="#User"/>
   </Actor>
   
-  <Actor rdf:ID="Steward">
-    <name>Community Steward</name>
+  <Actor rdf:ID="Guest">
+    <name>Guest user</name>
     <exposition>
-      A domain-specific community within the context of a registration
-      authority.  Examples include a working group of a standards body, a
-      special interest group of a professional society, and a journal produced
-      by a publisher.  Although a community is a collection of individuals, its
-      internal structure is not represented in the OOR. Consequently, a steward
-      is a kind of user with specific capabilities and responsibilities that
-      are not common to all users. One can think of a steward as a user that
-      represents the community during interactions with the OOR.
-    </exposition>
-    <kindOf rdf:resource="#ProcessManager"/>
-  </Actor>
-  
-  <Actor rdf:ID="Submittter">
-    <name>Content Submitter</name>
-    <exposition>
-      An individual that submits new materials or changes to existing materials
-      that are managed by a specific steward. Depending on the steward, there
-      may be no restrictions on who can be a submitter or there may be only a
-      fixed set of submitters.
-    </exposition>
-    <kindOf rdf:resource="#ProcessParticipant"/>
-  </Actor>
-  
-  <Actor rdf:ID="ProcessManager">
-    <name>Process Manager</name>
-    <exposition>
-      The common generalization of accreditors, registrars and stewards.  They
-      share the capability of creating and managing process and policy
-      definitions.
-    </exposition>
-    <kindOf rdf:resource="#ProcessParticipant"/>
-  </Actor>
-  
-  <Actor rdf:ID="ProcessParticipant">
-    <name>Process Participant</name>
-    <exposition>
-      A user that participates in an OOR process. Since processes are
-      associated with registrars and stewards, a user that participates in an
-      OOR process is implicitly also associated with that registrar or
-      steward. For example, a user could contribute to the OOR by providing
-      usage information and informal evaluations.
+      A individual who can read entities in VOYA without login.
     </exposition>
     <kindOf rdf:resource="#User"/>
   </Actor>
   
   <Actor rdf:ID="User">
-    <name>General User</name>
+    <name>user</name>
     <exposition>
-      A user of the OOR. This includes process managers and participants as
-      well as individuals who are searching the OOR or retrieving from it in an
-      ad hoc manner. Unlike process managers and participants, users in general
-      need not be associated with a registrar or steward.
+      The common user of VOYA. This include normaluser, adminuser and guest.
     </exposition>
   </Actor>
-
+  
 </rdf:RDF>
