@@ -592,38 +592,32 @@
     <name>Update commonts/contents on Media Wiki data</name>
     <author>CHIRU</author>
     <exposition>
-      A user of the VOYA wantS to update their previously commonts or edit a page's contents
+      A user of the VOYA wantS to update or edit a wiki entitiy
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
     <first>
       <Step>
-        <stepInitiator rdf:resource="#User"/>
+      <includes rdf:resource="#queryAuthorities"/>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="User"/>
         <specification>
-          A user constructs the URL to update an entity on Media Wiki.
-        </specification>
+          The user wants to edit the entity, and clicks on the edit button.
+          </specification> 
+        <next>
+      <Step>
+        <includes rdf:resource="#queryAuthorities"/>
         <next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
-          The user makes the request using HTTP URL query.
+          The user makes the update request on the editing page.
         </specification>
         <next>
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The VOYA endpoint receives the user's request and makes a registration authority check 
-        </specification>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#VOYA"/>
-        <specification>
-          The VOYA endpoint passes the user's authority check
-        </specification>
-        <next>
-      <Step>
-        <stepInitiator rdf:resource="#VOYA"/>
-        <specification>
-          The VOYA endpoint generates the media wiki according to the user's request.
+          The VOYA accecpts the user's requst and formats it into a URL.
         </specification>
         <next>
       <Step>
