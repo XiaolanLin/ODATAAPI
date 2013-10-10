@@ -47,7 +47,7 @@
 
   <!-- Use Case Descriptions -->
 
-  <UseCase rdf:ID="Normaluser" system="#VOYA">
+  <UseCase rdf:ID="Normalusersignup" system="#VOYA">
     <name>Normal user signup</name>
     <author>Tongzu Ding</author>
     <exposition>
@@ -172,7 +172,51 @@
     </first>
   </Alternative>
 
+  <UseCase rdf:ID="CreateEntitiy" system="#VOYA">
+    <name>Create an entitiy on wikivoyage</name>
+    <author>Tongzu Ding</author>
+    <exposition>
+      User creates a new entity in wikivoyage webpage via VOYA system
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 08, 2013</creationDate>
+    <first>
+      <Step>
+      	<stepInitiator rdf:resource="#User"/>
+      	<specification>
+      		The user wants to create a new entity on wikivoyage webpage, and click the create button.
+      	</specification>
+      	<next>
+      <Step>
+        <includes rdf:resource="#queryAuthorities"/>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA make the user's requst by formatting a URL.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+         VOYA send the request to the service website.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Wikimedia"/>
+        <specification>
+          Wikimedia receives the requst from VOYA and does the query
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="VOYA"/>
+        <specification>
+          VOYA notifys the user that the create process has been done.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
 
+<!-- =================added by DING, TONGZU end============= -->
 
 <!-- ==============================added by LIN,Xiaolan================================= -->
 
