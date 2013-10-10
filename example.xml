@@ -440,14 +440,14 @@
           The Media Wiki API retrieves the required entities from VOYA database as per request
 		  and returns the entities.
         </specification>
-		<next>
+	<next>
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           The VOYA endpoint receives response from Media Wiki API and returns 
 		  the entities to the user.
         </specification>
-		<next>
+	<next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
@@ -497,7 +497,7 @@
           VOYA return to the menber management page for the adminuser.
         </specification>
         <hasAlternativeFlow rdf:resource="#canceldelete"/>
-      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+      </Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
   
