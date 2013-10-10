@@ -542,6 +542,268 @@
   
   <!-- ==============================END added by Man,Yang================================= -->
   
+    <!--=======================================added by Gang Liu==============================-->
+
+    <UseCase rdf:ID="updateedit" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      A user of the VOYA wantS to update their previously commonts or edit a page's contents
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          A user constructs the URL to update an entity on Media Wiki.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          The user makes the request using HTTP URL query.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request and makes a registration authority check 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint passes the user's authority check
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint generates the media wiki according to the user's request.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint makes the API request Media Wiki.
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#MediaWiki"/>
+        <specification>
+          The VOYA API updates the required entities on VOYA database as per request
+      and returns the updated entity.
+        </specification>
+    <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives response from Media Wiki API and returns 
+      updated entity to the user.
+        </specification>
+    <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user receives updated entity as the service response.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  <Alternative rdf:ID="guest">
+      <name>checkfailed</name>
+      <author>CHIRU</author>
+      <exposition>
+          the user are failed to registration authority check, VOYA will reject the user's requestion
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 09, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  The user do not have the editor privileges
+              </specification>
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  VOYA notifies that the editting operate are rejected
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+
+   <UseCase rdf:ID="updatePersonalInfo" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      A user of the VOYA wants to update personal personal information
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normal user"/>
+        <specification>
+         The Normal User requests a personal information updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request then return a personal setting page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user makes a confirm for updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint accepts the user's request and the returens a updated page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint generates the media wiki according to the user's request.
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+  <UseCase rdf:ID="updateSystemSetting" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      A user of the VOYA wants to update system setting such as news notification
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Normal user"/>
+        <specification>
+         The Normal User makes a request for updating the preference setting of VOYA system
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request and return a system setting page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Normaluser"/>
+        <specification>
+          The user makes a confirm for updating
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint accepts the user's request and returens an updated page
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+ <UseCase rdf:ID="updatehomepage" system="#VOYA">
+    <name>Update commonts/contents on Media Wiki data</name>
+    <author>CHIRU</author>
+    <exposition>
+      An administrator wants to update the content of the homepage such as recommendation activities and advertisements
+    </exposition>
+    <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
+    <first>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+         The administrator makes a request for updating the homepage contents
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint receives the user's request and makes a registration authority check 
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          The VOYA endpoint passes the check and returens an administration page
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator updates changes
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+          VOYA presents a window to conform the update action, and a "cancel" button and a "yes" button included.
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator makes a finial confirm
+        </specification>
+        <next>
+     <Step>
+        <stepInitiator rdf:resource="#Adminuser"/>
+        <specification>
+          The administrator clicks "yes" button
+        </specification>
+        <next>
+      <Step>
+        <stepInitiator rdf:resource="#VOYA"/>
+        <specification>
+           The VOYA endpoint accepts the user's request and returens an updated homepage
+        </specification>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+    </first>
+  </UseCase>
+
+   <Alternative rdf:ID="cancle">
+      <name>checkfailed</name>
+      <author>CHIRU</author>
+      <exposition>
+          the administrator clicks the "cancle" button
+      </exposition>
+      <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">OCT 09, 2013</creationDate>
+      <precondition>
+          <Condition>
+              <specification>
+                  the administrator give up updating
+          </Condition>
+      </precondition>
+      <first>
+          <Step>
+              <stepInitiator rdf:resource="#VOYA"/>
+              <specification>
+                  The VOYA endpoint accepts the user's finial request and returens an original homepage
+              </specification>
+          </Step>
+      </first>
+  </Alternative>
+
+  <!--================================================END by Gang--========================================>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <UseCase rdf:ID="registerSubmitter" system="#OOR">
     <name>Submitter Registration</name>
     <author>M&#225;ximo Gurm&#233;ndez</author>
