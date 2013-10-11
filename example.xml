@@ -202,9 +202,15 @@
         </specification>
         <next>
       <Step>
+<<<<<<< HEAD
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           voya receives the requst from VOYA and does the query
+=======
+        <stepInitiator rdf:resource="#Wikimedia"/>
+        <specification>
+          Wikimedia receives the requst from VOYA and does the query
+>>>>>>> ff9ca4f053868a43706cdbe5ff5f14ddb9a739f9
         </specification>
         <next>
       <Step>
@@ -640,7 +646,10 @@
         <specification>
           The user receives updated entity as the service response.
         </specification>
+<<<<<<< HEAD
         <hasAlternativeFlow rdf:resource="#guestCheckFailed"/>
+=======
+>>>>>>> ff9ca4f053868a43706cdbe5ff5f14ddb9a739f9
       </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
