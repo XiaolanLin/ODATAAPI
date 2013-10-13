@@ -12,11 +12,11 @@
 
   <!-- VOYA Use Case Instance Data -->
   
-  <owl:Ontology rdf:about="">
+  <owl:VOYA rdf:about="">
     <owl:versionInfo>v 0.1 2013/10/08 14:15:58</owl:versionInfo>
     <rdfs:comment>VOYA Use Case Descriptions</rdfs:comment>
-    <owl:imports rdf:resource="http://www.ccs.neu.edu/home/kenb/ontologies/ucdo.owl"/>
-  </owl:Ontology>
+    <owl:imports rdf:resource=""/>
+  </owl:VOYA>
 
 
   <System rdf:ID="VOYA">
@@ -181,11 +181,11 @@
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 08, 2013</creationDate>
     <first>
       <Step>
-      	<stepInitiator rdf:resource="#User"/>
-      	<specification>
-      		The user wants to create a new entity on wikivoyage webpage, and click the create button.
-      	</specification>
-      	<next>
+        <stepInitiator rdf:resource="#User"/>
+        <specification>
+          The user wants to create a new entity on wikivoyage webpage, and click the create button.
+        </specification>
+        <next>
       <Step>
         <includes rdf:resource="#queryAuthorities"/>
         <next>
@@ -208,7 +208,7 @@
         </specification>
         <next>
       <Step>
-        <stepInitiator rdf:resource="VOYA"/>
+        <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           VOYA notifys the user that the create process has been done.
         </specification>
@@ -382,21 +382,15 @@
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
-    <Step>
-      <includes rdf:resource="#queryAuthorities"/>
-      <next>
-      <Step>
-        <stepInitiator rdf:resource="#User"/>
-        <specification>
-          A user enters the personal page.
-        </specification>
-        <next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
           A user clicks on the delete button on the selected entity.
         </specification>
         <next>
+      <Step>
+       <includes rdf:resource="#queryAuthorities"/>
+       <next>
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
@@ -433,7 +427,7 @@
         <specification>
           VOYA represents the updated entities displayed in the personal page.
         </specification>
-      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
+      </Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step></next></Step>
     </first>
   </UseCase>
 
@@ -449,7 +443,7 @@
     <author>Man Yang</author>
     <exposition>
       The user  wants to retrieve/read entities on VOYA data such as
-	  retrieve a page.
+    retrieve a page.
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
@@ -469,7 +463,7 @@
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           The VOYA endpoint receives the user request and generates the media wiki
-		  API query according to the user's request.
+      API query according to the user's request.
         </specification>
         <next>
       <Step>
@@ -482,16 +476,16 @@
         <stepInitiator rdf:resource="#MediaWiki"/>
         <specification>
           The Media Wiki API retrieves the required entities from VOYA database as per request
-		  and returns the entities.
+      and returns the entities.
         </specification>
-	<next>
+  <next>
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
           The VOYA endpoint receives response from Media Wiki API and returns 
-		  the entities to the user.
+      the entities to the user.
         </specification>
-	<next>
+  <next>
       <Step>
         <stepInitiator rdf:resource="#User"/>
         <specification>
@@ -551,7 +545,7 @@
     <author>Man Yang</author>
     <exposition>
       To set-up and configure the OData endpoint for VOYA for allowing users to query
-	  and access data and metadata.
+    and access data and metadata.
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct 9, 2013</creationDate>
     <first>
