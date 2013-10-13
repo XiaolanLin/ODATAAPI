@@ -26,18 +26,13 @@
     <author>Lin, Xiaolan</author>
     <author>Yang, Man</author>
     <exposition>
-        The VOYA provides a way to query and update the pages of WikiVoyage. The API is an
+        The VOYA API provides a way to query and update the pages of WikiVoyage and VOYA database. The API is an
         Odata endpoint which accepts various user queries and in response provides user the
-        ability to read and manipulate WikiVoyage pages. Being the API that follows the OData
+        ability to read and manipulate WikiVoyage pages and VOYA database. Being the API that follows the OData
         standard, it exposes the Entity Data Model and it is assumed that the queries that the
-        user makes follow the url conventions of OData standard. This API acts as a facade to
-        the WikiVoyage features, data and medadata.
-        
-      The VOYA is also a participant in use cases. All the communication between
-      user and VOYA is assumed under an authenticated and secure channel. Activities
-      such as signup are therefore not included in any of the use cases. The term
-      item is used generically for any entity that is administered by the VOYA with
-      versioning and annotations such as provenance information.
+        user makes follow the url conventions of OData standard. VOYA API acts as a transfer between the user and the Media Wiki features, data and meta data.
+       The VOYA API is also a participant in use cases. All the communication between
+      user and VOYA is assumed authenticated.
     </exposition>
     <version>0.1</version>
     <organization>Northeastern University</organization>
@@ -331,7 +326,7 @@
               <Step>
                   <stepInitiator rdf:resource="#User"/>
                   <specification>
-                      The user recevies the notification from VOYA.
+                      The user receives the notification from VOYA.
                   </specification>
           </Step></next></Step>
       </first>
@@ -642,7 +637,7 @@
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The VOYA accecpts the user's requst and formats it into a URL.
+          The VOYA accepts the user's request and formats it into a URL.
         </specification>
         <next>
       <Step>
@@ -701,7 +696,7 @@
     <name>Update personal information</name>
     <author>CHIRU</author>
     <exposition>
-      A user of the VOYA wants to update personal personal information
+      A user of the VOYA wants to update personal information
     </exposition>
     <creationDate rdf:type="http://www.w3.org/2001/XMLSchema#date">Oct. 9, 2013</creationDate>
     <first>
@@ -726,7 +721,7 @@
       <Step>
         <stepInitiator rdf:resource="#VOYA"/>
         <specification>
-          The VOYA makes the update request to the VOYA database and recevies the success reponses
+          The VOYA makes the update request to the VOYA database and receives the success reponses
         </specification>
         <next>
       <Step>
