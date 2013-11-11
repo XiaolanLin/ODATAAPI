@@ -1,0 +1,15 @@
+<?php
+mysql_connect("localhost","root","");
+mysql_select_db("VAVO");
+
+$delete_id = $_GET['del'];
+
+$query = "delete from user where id='$delete_id'";
+
+if(mysql_query($query)){
+
+  echo "<script>window.open/* change here?? */('user.php?deleted=data has been deleted...','_self')</script>";
+
+}
+
+?>
