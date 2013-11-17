@@ -15,6 +15,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+CREATE DATABASE voya_database;
 --
 -- Database: `vova_database`
 --
@@ -26,7 +27,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `login'
 --
 
-use vova_database;
+use voya_database;
 
 CREATE TABLE IF NOT EXISTS `login` (
   `user_name` varchar(20) NOT NULL,
@@ -47,14 +48,14 @@ CREATE TABLE IF NOT EXISTS `login` (
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(30) NOT NULL,
-  `password` text NOT NULL,
+  `password` varchar(30) NOT NULL,
   `create_data` datetime NOT NULL,
   `last_login_time` datetime NOT NULL,
   `Last_name` varchar(255) DEFAULT NULL,
   `First_name` varchar(255) DEFAULT NULL,
-  `Email_add` text,
+  `Email_add` varchar(100),
   `Gender` enum('F','M','N') DEFAULT NULL,
-  `Location` text,
+  `Location` varchar(255),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 

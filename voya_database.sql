@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `vova_database`
 --
-CREATE DATABASE IF NOT EXISTS `vova_database` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `vova_database`;
+CREATE DATABASE IF NOT EXISTS `voya_database` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `voya_database`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +30,7 @@ USE `vova_database`;
 
 CREATE TABLE IF NOT EXISTS `login` (
   `user_name` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -38,9 +38,6 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`user_name`, `password`) VALUES
-('dingt', 'password'),
-('dingt', 'password'),
-('dingt', 'password'),
 ('dingt', 'password');
 
 -- --------------------------------------------------------
