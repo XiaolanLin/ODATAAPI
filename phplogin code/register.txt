@@ -11,8 +11,7 @@ header('Content-type: application/json');
 if($_POST)
 {
 // username and password sent from Form 
-//$myusername=addslashes($_POST['username']); 
-//$mypassword=addslashes($_POST['password']); 
+
 
 $username=mysql_real_escape_string($_POST['username']);
 $password=mysql_real_escape_string($_POST['password']);
