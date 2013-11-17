@@ -19,11 +19,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Database: `vova_database`
 --
 
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `login'
 --
+
+use vova_database;
 
 CREATE TABLE IF NOT EXISTS `login` (
   `user_name` varchar(20) NOT NULL,
