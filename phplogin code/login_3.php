@@ -1,30 +1,40 @@
 <?php
-include("configuration_3.php");
-session_start();
-if($_SERVER["REQUEST_METHOD"] == "POST")
+$mysql_hostname = "localhost";
+$mysql_user = "root";
+$mysql_password = "";
+$mysql_database = "vova_database";
+$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) 
+or die("Opps some thing went wrong");
+
+mysql_select_db($mysql_database, $bd) or die("Opps some thing went wrong");
+header('Content-type: application/json');
+if($_POST)
 {
 // username and password sent from Form 
-$myusername=addslashes($_POST['username']); 
-$mypassword=addslashes($_POST['password']); 
+//$myusername=addslashes($_POST['username']); 
+//$mypassword=addslashes($_POST['password']); 
 
-$sql="SELECT id FROM admin WHERE username='$myusername' and passcode='$mypassword'";
-$result=mysql_query($sql);
-$row=mysql_fetch_array($result);
-$active=$row['active'];
+$username=mysql_real_escape_string($_POST['username']);
+$password=mysql_real_escape_string($_POST['password']);
+$select="SELECT * FROM user WHERE user_name='$username' and password='$password'";
+
+$result=mysql_query($select);
+
 $count=mysql_num_rows($result);
 
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-if($count==1)
-{
-session_register("myusername");
-$_SESSION['login']=$myusername;
+	if($count==1){
+		$insert="INSERT INTO login (user_name, password) VALUES ('$username', '$password')";
+		mysql_query($insert);
+		echo '{"success":1}';
+	}else {
+		echo '{"success":0,"error_message":"Username and/or password is invalid."}';
+	}
 
-header("location: welcome.php");
+}else {
+	'{"success":0,"error_message":"php fails"}';
 }
-else 
-{
-$error="Your Login Name or Password is invalid";
-}
-}
+
+
 ?>
