@@ -1,5 +1,5 @@
 <?php
-$mysql_hostname = "localhost";
+$mysql_hostname = "72.167.233.37";
 $mysql_user = "voya";
 $mysql_password = "VOYAvoya2013@";
 $mysql_database = "voya";
