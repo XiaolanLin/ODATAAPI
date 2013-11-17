@@ -15,7 +15,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-CREATE DATABASE voya_database;
+
+
 --
 -- Database: `vova_database`
 --
@@ -27,7 +28,7 @@ CREATE DATABASE voya_database;
 -- Table structure for table `login'
 --
 
-use voya_database;
+use voya;
 
 CREATE TABLE IF NOT EXISTS `login` (
   `user_name` varchar(20) NOT NULL,
