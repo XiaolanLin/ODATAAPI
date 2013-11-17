@@ -32,7 +32,6 @@ $count=mysql_num_rows($result);
 		mysql_query($insert);
 		echo '{"success":1}';
 	}
-	}
 
 }else {
 	'{"success":0,"error_message":"php fails"}';
