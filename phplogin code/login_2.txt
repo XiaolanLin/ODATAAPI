@@ -5,7 +5,7 @@ if (isset($_POST['password'])) // if the password is set then the  form has been
  include("configuration_3.php");
  $username =  mysql_real_escape_string($_POST['username']);
  $password = mysql_real_escape_string($_POST['password']);
- $qstr = "SELECT * from user where username ='$username' and password ='$password'";
+ $qstr = "SELECT * from user where username ='$user_name' and password ='$password'";
 
  $result = mysql_query($qstr);
  if (mysql_num_rows($result))  
