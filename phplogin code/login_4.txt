@@ -1,10 +1,10 @@
 <?php
-
+header('Content-type: application/json');
 $host="localhost"; // Host name 
-$username=""; // Mysql username 
+$username="root"; // Mysql username 
 $password=""; // Mysql password 
-$db_name="test"; // Database name 
-$tbl_name="members"; // Table name 
+$db_name="vova_database"; // Database name 
+$tbl_name="user"; // Table name 
 
 // Connect to server and select databse.
 mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
@@ -31,9 +31,10 @@ if($count==1){
 // Register $myusername, $mypassword and redirect to file "login_success.php"
 session_register("myusername");
 session_register("mypassword"); 
-header("location:login_success.php");
+header("location:login.php");
+echo '{"success":1}'; //
 }
 else {
-echo "Wrong Username or Password";
+echo '{"success":0,"error_message":"Username and/or password is invalid."}';
 }
 ?>
