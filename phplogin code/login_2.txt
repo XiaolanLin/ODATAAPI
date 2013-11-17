@@ -1,16 +1,17 @@
 <?php
-// version 1.1
+header('Content-type: application/json');
 if (isset($_POST['password'])) // if the password is set then the  form has been submitted on login.php page
 {
- include("config.php");
+ include("configuration_3.php");
  $username =  mysql_real_escape_string($_POST['username']);
  $password = mysql_real_escape_string($_POST['password']);
- $qstr = "SELECT * from members where username ='$username' and password ='$password'";
+ $qstr = "SELECT * from user where username ='$username' and password ='$password'";
 
  $result = mysql_query($qstr);
- if (mysql_num_rows($result))  echo "<font color=#008000><Center><b>**Successful Login**</b></Center></font>";
- else echo "<font color=#ff0000><Center><b>**Failed Login**</b></Center></font>";
+ if (mysql_num_rows($result))  
+ echo '{"success":1}';
+ else echo  '{"success":0,"error_message":"Username and/or password is invalid."}';
  mysql_close();
 }
-else echo "<font color=#ff8000><Center><b>**No login attempted**</b></Center></font>";
+else echo '{"success":0,"error_message":"Username and/or password is invalid."}';
 ?>
