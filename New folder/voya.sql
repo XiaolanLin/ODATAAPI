@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS `districts` (
   `understand` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `city_id` (`city_id`)
+  CONSTRAINT districts FOREIGN KEY (city_id)
+  REFERENCES city(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -81,7 +82,8 @@ CREATE TABLE IF NOT EXISTS `play` (
   `location` varchar(255) DEFAULT NULL,
   `explane` text,
   PRIMARY KEY (`id`),
-  KEY `city_id` (`city_id`)
+  CONSTRAINT play FOREIGN KEY (city_id)
+  REFERENCES city(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -104,7 +106,8 @@ CREATE TABLE IF NOT EXISTS `see` (
   `place_name` varchar(255) DEFAULT NULL,
   `intro` text,
   PRIMARY KEY (`id`),
-  KEY `city_id` (`city_id`)
+  CONSTRAINT see FOREIGN KEY (city_id)
+  REFERENCES city(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -128,7 +131,8 @@ CREATE TABLE IF NOT EXISTS `understand` (
   `history` text,
   `today` text,
   PRIMARY KEY (`id`),
-  KEY `city_id` (`city_id`)
+  CONSTRAINT understand FOREIGN KEY (city_id)
+  REFERENCES city(id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
